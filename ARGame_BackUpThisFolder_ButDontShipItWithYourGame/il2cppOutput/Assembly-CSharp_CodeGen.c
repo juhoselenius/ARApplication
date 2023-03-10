@@ -44,23 +44,31 @@ extern void ARFeatheredPlaneMeshVisualizer_GenerateBoundaryUVs_mF756D3C1F7925A69
 extern void ARFeatheredPlaneMeshVisualizer__ctor_m9A77651BCAE58AA0B994FFF6C6B63B1CFF2729F6 (void);
 // 0x00000010 System.Void ARFeatheredPlaneMeshVisualizer::.cctor()
 extern void ARFeatheredPlaneMeshVisualizer__cctor_m56285A000EE27A1631BE9C5BCDA5C376E5D133C3 (void);
-// 0x00000011 System.Void PlaceObject::Awake()
-extern void PlaceObject_Awake_mD6993E74BE76ED7E3B9AAA189F1B37638B7D2E70 (void);
-// 0x00000012 System.Boolean PlaceObject::TryGetTouchPosition(UnityEngine.Vector2&)
-extern void PlaceObject_TryGetTouchPosition_m1C8EFF608B6ACF85639C06611795ED43A008476E (void);
-// 0x00000013 System.Void PlaceObject::Update()
-extern void PlaceObject_Update_mE52445879BBA344DEBFEDBF6CF23FEE92A059358 (void);
-// 0x00000014 System.Void PlaceObject::.ctor()
-extern void PlaceObject__ctor_m73094142430E3C4071B1660682AB5867522D1510 (void);
-// 0x00000015 System.Void PlaceObject::.cctor()
-extern void PlaceObject__cctor_m2CBD4810576CD93575F0E8BBFE80975A22800182 (void);
-// 0x00000016 System.Void SpawnableManager::Awake()
+// 0x00000011 System.Void Block::Awake()
+extern void Block_Awake_mE9FDF180C8BA0DC60A911375004E405675890327 (void);
+// 0x00000012 System.Void Block::Update()
+extern void Block_Update_mC56200550B9F73733F0A112636B9B9E7E627DD7C (void);
+// 0x00000013 System.Void Block::ChangeMaterial()
+extern void Block_ChangeMaterial_m21FF7D43273916C6EC03134706D59CD94D67BDDE (void);
+// 0x00000014 System.Void Block::DestroyThisGameobject()
+extern void Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6AA (void);
+// 0x00000015 System.Void Block::.ctor()
+extern void Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF (void);
+// 0x00000016 System.Void HeightCheck::Awake()
+extern void HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A (void);
+// 0x00000017 System.Void HeightCheck::FixedUpdate()
+extern void HeightCheck_FixedUpdate_m4E338A12155B9147DFA8DAE6699F2D99BF689950 (void);
+// 0x00000018 System.Void HeightCheck::CheckHeight()
+extern void HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63 (void);
+// 0x00000019 System.Void HeightCheck::.ctor()
+extern void HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1 (void);
+// 0x0000001A System.Void SpawnableManager::Awake()
 extern void SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30 (void);
-// 0x00000017 System.Void SpawnableManager::Update()
-extern void SpawnableManager_Update_m7A9A38650830610C5C81A77D22ABB3A011E23220 (void);
-// 0x00000018 System.Void SpawnableManager::.ctor()
+// 0x0000001B System.Void SpawnableManager::FixedUpdate()
+extern void SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6 (void);
+// 0x0000001C System.Void SpawnableManager::.ctor()
 extern void SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED (void);
-static Il2CppMethodPointer s_methodPointers[24] = 
+static Il2CppMethodPointer s_methodPointers[28] = 
 {
 	AnchorCreator_get_AnchorPrefab_mBBAF7805E9D9F8D79408EE642D153BC76306B25A,
 	AnchorCreator_set_AnchorPrefab_m53CC9CC3022C713826B44536B48B462C8A1FACFF,
@@ -78,47 +86,55 @@ static Il2CppMethodPointer s_methodPointers[24] =
 	ARFeatheredPlaneMeshVisualizer_GenerateBoundaryUVs_mF756D3C1F7925A69CD8C7C8CCE56209AB321FEF5,
 	ARFeatheredPlaneMeshVisualizer__ctor_m9A77651BCAE58AA0B994FFF6C6B63B1CFF2729F6,
 	ARFeatheredPlaneMeshVisualizer__cctor_m56285A000EE27A1631BE9C5BCDA5C376E5D133C3,
-	PlaceObject_Awake_mD6993E74BE76ED7E3B9AAA189F1B37638B7D2E70,
-	PlaceObject_TryGetTouchPosition_m1C8EFF608B6ACF85639C06611795ED43A008476E,
-	PlaceObject_Update_mE52445879BBA344DEBFEDBF6CF23FEE92A059358,
-	PlaceObject__ctor_m73094142430E3C4071B1660682AB5867522D1510,
-	PlaceObject__cctor_m2CBD4810576CD93575F0E8BBFE80975A22800182,
+	Block_Awake_mE9FDF180C8BA0DC60A911375004E405675890327,
+	Block_Update_mC56200550B9F73733F0A112636B9B9E7E627DD7C,
+	Block_ChangeMaterial_m21FF7D43273916C6EC03134706D59CD94D67BDDE,
+	Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6AA,
+	Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF,
+	HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A,
+	HeightCheck_FixedUpdate_m4E338A12155B9147DFA8DAE6699F2D99BF689950,
+	HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63,
+	HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1,
 	SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30,
-	SpawnableManager_Update_m7A9A38650830610C5C81A77D22ABB3A011E23220,
+	SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6,
 	SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED,
 };
-static const int32_t s_InvokerIndices[24] = 
+static const int32_t s_InvokerIndices[28] = 
 {
-	5106,
-	4150,
-	5201,
-	5201,
-	5201,
-	5201,
-	8267,
-	5147,
-	4183,
-	5201,
-	5201,
-	5201,
-	4045,
-	4150,
-	5201,
-	8267,
-	5201,
-	2760,
-	5201,
-	5201,
-	8267,
-	5201,
-	5201,
-	5201,
+	5334,
+	4335,
+	5440,
+	5440,
+	5440,
+	5440,
+	8544,
+	5376,
+	4369,
+	5440,
+	5440,
+	5440,
+	4221,
+	4335,
+	5440,
+	8544,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
+	5440,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	24,
+	28,
 	s_methodPointers,
 	0,
 	NULL,

@@ -4,24 +4,43 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public bool selected;
+    public List<Material> cubeMaterials = new List<Material>();
+
+    private Renderer rend;
+    private int materialIndex;
     
     // Start is called before the first frame update
     void Awake()
     {
-        selected = false;
+        rend = gameObject.GetComponent<Renderer>();
+        materialIndex = 0;
+        rend.material = cubeMaterials[materialIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(selected)
+        if(gameObject.transform.position.y < -10f)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+            DestroyThisGameobject();
+        }
+    }
+
+    public void ChangeMaterial()
+    {
+        if(materialIndex + 1 < cubeMaterials.Count)
+        {
+            materialIndex++;
         }
         else
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.green;
+            materialIndex = 0;
         }
+        rend.material = cubeMaterials[materialIndex];
+    }
+
+    public void DestroyThisGameobject()
+    {
+        Destroy(gameObject);
     }
 }
