@@ -5,40 +5,53 @@ using TMPro;
 
 public class HeightCheck : MonoBehaviour
 {
-    public List<GameObject> objects = new List<GameObject>();
+    public GameObject[] objects;
     public float structureHeight;
+    public float high;
+    public float low;
     public float counter;
     public TextMeshProUGUI structureHeightText;
     
     void Awake()
     {
-        structureHeight = 0;
         counter = 0;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        counter += Time.fixedDeltaTime;
-        
-        if(counter > 2)
-        {
-            CheckHeight();
-            counter = 0;
-        }
+        CheckHeight();
     }
 
     void CheckHeight()
     {
+        objects = GameObject.FindGameObjectsWithTag("Spawnable");
+        
         structureHeight = 0;
 
-        foreach (GameObject gameObject in objects)
+        high = -100;
+        low = 100;
+
+        if (objects.Length == 0)
         {
-            if (gameObject.transform.position.y > structureHeight)
+            structureHeightText.text = "0";
+            return;
+        }
+        
+        foreach (GameObject obj in objects)
+        {
+            if(obj.transform.position.y < low)
             {
-                structureHeight = gameObject.transform.position.y;
+                low = obj.transform.position.y;
+            }
+            
+            if (obj.transform.position.y > high)
+            {
+                high = obj.transform.position.y;
             }
         }
+
+        structureHeight = high - low;
 
         structureHeightText.text = structureHeight.ToString();
     }

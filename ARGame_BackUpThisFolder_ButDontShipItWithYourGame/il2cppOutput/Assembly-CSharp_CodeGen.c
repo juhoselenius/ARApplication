@@ -52,23 +52,37 @@ extern void Block_Update_mC56200550B9F73733F0A112636B9B9E7E627DD7C (void);
 extern void Block_ChangeMaterial_m21FF7D43273916C6EC03134706D59CD94D67BDDE (void);
 // 0x00000014 System.Void Block::DestroyThisGameobject()
 extern void Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6AA (void);
-// 0x00000015 System.Void Block::.ctor()
+// 0x00000015 System.Collections.IEnumerator Block::ResetFlag()
+extern void Block_ResetFlag_m7A7DCCDB3392667E813A010AA9FE4B3E3E2C703B (void);
+// 0x00000016 System.Void Block::.ctor()
 extern void Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF (void);
-// 0x00000016 System.Void HeightCheck::Awake()
+// 0x00000017 System.Void Block/<ResetFlag>d__9::.ctor(System.Int32)
+extern void U3CResetFlagU3Ed__9__ctor_mE339C35A30535AC3468EDB6D1C312D9B1B0E1237 (void);
+// 0x00000018 System.Void Block/<ResetFlag>d__9::System.IDisposable.Dispose()
+extern void U3CResetFlagU3Ed__9_System_IDisposable_Dispose_m19A3AC567BB7506386AAA597490583784895CDBC (void);
+// 0x00000019 System.Boolean Block/<ResetFlag>d__9::MoveNext()
+extern void U3CResetFlagU3Ed__9_MoveNext_mFED80C3CBFDA11CF458E71A0ACD187F138DEEEE5 (void);
+// 0x0000001A System.Object Block/<ResetFlag>d__9::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CResetFlagU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC95E35EB3E093C859EE18D83514851417767C8E9 (void);
+// 0x0000001B System.Void Block/<ResetFlag>d__9::System.Collections.IEnumerator.Reset()
+extern void U3CResetFlagU3Ed__9_System_Collections_IEnumerator_Reset_mB359DEF7211B6D3569F0A3E2A96E6785469B7CA9 (void);
+// 0x0000001C System.Object Block/<ResetFlag>d__9::System.Collections.IEnumerator.get_Current()
+extern void U3CResetFlagU3Ed__9_System_Collections_IEnumerator_get_Current_m88517EEDB7C098D76ADFBBDC96DDE43F11565784 (void);
+// 0x0000001D System.Void HeightCheck::Awake()
 extern void HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A (void);
-// 0x00000017 System.Void HeightCheck::FixedUpdate()
-extern void HeightCheck_FixedUpdate_m4E338A12155B9147DFA8DAE6699F2D99BF689950 (void);
-// 0x00000018 System.Void HeightCheck::CheckHeight()
+// 0x0000001E System.Void HeightCheck::Update()
+extern void HeightCheck_Update_m489CF938BBCF616939B1EFDD0898F916FB8B7AB7 (void);
+// 0x0000001F System.Void HeightCheck::CheckHeight()
 extern void HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63 (void);
-// 0x00000019 System.Void HeightCheck::.ctor()
+// 0x00000020 System.Void HeightCheck::.ctor()
 extern void HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1 (void);
-// 0x0000001A System.Void SpawnableManager::Awake()
+// 0x00000021 System.Void SpawnableManager::Awake()
 extern void SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30 (void);
-// 0x0000001B System.Void SpawnableManager::FixedUpdate()
+// 0x00000022 System.Void SpawnableManager::FixedUpdate()
 extern void SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6 (void);
-// 0x0000001C System.Void SpawnableManager::.ctor()
+// 0x00000023 System.Void SpawnableManager::.ctor()
 extern void SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED (void);
-static Il2CppMethodPointer s_methodPointers[28] = 
+static Il2CppMethodPointer s_methodPointers[35] = 
 {
 	AnchorCreator_get_AnchorPrefab_mBBAF7805E9D9F8D79408EE642D153BC76306B25A,
 	AnchorCreator_set_AnchorPrefab_m53CC9CC3022C713826B44536B48B462C8A1FACFF,
@@ -90,16 +104,23 @@ static Il2CppMethodPointer s_methodPointers[28] =
 	Block_Update_mC56200550B9F73733F0A112636B9B9E7E627DD7C,
 	Block_ChangeMaterial_m21FF7D43273916C6EC03134706D59CD94D67BDDE,
 	Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6AA,
+	Block_ResetFlag_m7A7DCCDB3392667E813A010AA9FE4B3E3E2C703B,
 	Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF,
+	U3CResetFlagU3Ed__9__ctor_mE339C35A30535AC3468EDB6D1C312D9B1B0E1237,
+	U3CResetFlagU3Ed__9_System_IDisposable_Dispose_m19A3AC567BB7506386AAA597490583784895CDBC,
+	U3CResetFlagU3Ed__9_MoveNext_mFED80C3CBFDA11CF458E71A0ACD187F138DEEEE5,
+	U3CResetFlagU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC95E35EB3E093C859EE18D83514851417767C8E9,
+	U3CResetFlagU3Ed__9_System_Collections_IEnumerator_Reset_mB359DEF7211B6D3569F0A3E2A96E6785469B7CA9,
+	U3CResetFlagU3Ed__9_System_Collections_IEnumerator_get_Current_m88517EEDB7C098D76ADFBBDC96DDE43F11565784,
 	HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A,
-	HeightCheck_FixedUpdate_m4E338A12155B9147DFA8DAE6699F2D99BF689950,
+	HeightCheck_Update_m489CF938BBCF616939B1EFDD0898F916FB8B7AB7,
 	HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63,
 	HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1,
 	SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30,
 	SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6,
 	SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED,
 };
-static const int32_t s_InvokerIndices[28] = 
+static const int32_t s_InvokerIndices[35] = 
 {
 	5334,
 	4335,
@@ -121,7 +142,14 @@ static const int32_t s_InvokerIndices[28] =
 	5440,
 	5440,
 	5440,
+	5334,
 	5440,
+	4309,
+	5440,
+	5245,
+	5334,
+	5440,
+	5334,
 	5440,
 	5440,
 	5440,
@@ -134,7 +162,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	28,
+	35,
 	s_methodPointers,
 	0,
 	NULL,
