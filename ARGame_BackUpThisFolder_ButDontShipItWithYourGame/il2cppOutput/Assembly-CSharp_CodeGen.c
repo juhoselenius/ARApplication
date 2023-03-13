@@ -56,33 +56,37 @@ extern void Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6A
 extern void Block_ResetFlag_m7A7DCCDB3392667E813A010AA9FE4B3E3E2C703B (void);
 // 0x00000016 System.Void Block::.ctor()
 extern void Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF (void);
-// 0x00000017 System.Void Block/<ResetFlag>d__9::.ctor(System.Int32)
-extern void U3CResetFlagU3Ed__9__ctor_mE339C35A30535AC3468EDB6D1C312D9B1B0E1237 (void);
-// 0x00000018 System.Void Block/<ResetFlag>d__9::System.IDisposable.Dispose()
-extern void U3CResetFlagU3Ed__9_System_IDisposable_Dispose_m19A3AC567BB7506386AAA597490583784895CDBC (void);
-// 0x00000019 System.Boolean Block/<ResetFlag>d__9::MoveNext()
-extern void U3CResetFlagU3Ed__9_MoveNext_mFED80C3CBFDA11CF458E71A0ACD187F138DEEEE5 (void);
-// 0x0000001A System.Object Block/<ResetFlag>d__9::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
-extern void U3CResetFlagU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC95E35EB3E093C859EE18D83514851417767C8E9 (void);
-// 0x0000001B System.Void Block/<ResetFlag>d__9::System.Collections.IEnumerator.Reset()
-extern void U3CResetFlagU3Ed__9_System_Collections_IEnumerator_Reset_mB359DEF7211B6D3569F0A3E2A96E6785469B7CA9 (void);
-// 0x0000001C System.Object Block/<ResetFlag>d__9::System.Collections.IEnumerator.get_Current()
-extern void U3CResetFlagU3Ed__9_System_Collections_IEnumerator_get_Current_m88517EEDB7C098D76ADFBBDC96DDE43F11565784 (void);
-// 0x0000001D System.Void HeightCheck::Awake()
-extern void HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A (void);
-// 0x0000001E System.Void HeightCheck::Update()
+// 0x00000017 System.Void Block/<ResetFlag>d__11::.ctor(System.Int32)
+extern void U3CResetFlagU3Ed__11__ctor_m16E4E2AF6E66992B22E5A4E231D8DCBFB8333199 (void);
+// 0x00000018 System.Void Block/<ResetFlag>d__11::System.IDisposable.Dispose()
+extern void U3CResetFlagU3Ed__11_System_IDisposable_Dispose_mF16FE0A168704BF47A81E848B0EBC53EEB2B638F (void);
+// 0x00000019 System.Boolean Block/<ResetFlag>d__11::MoveNext()
+extern void U3CResetFlagU3Ed__11_MoveNext_m83E749BAFB2BDD626591F524FFC29FF251D89F3C (void);
+// 0x0000001A System.Object Block/<ResetFlag>d__11::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CResetFlagU3Ed__11_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5501A33F4ED9B6A803642E809575C94984B12FF3 (void);
+// 0x0000001B System.Void Block/<ResetFlag>d__11::System.Collections.IEnumerator.Reset()
+extern void U3CResetFlagU3Ed__11_System_Collections_IEnumerator_Reset_mEEA2A3EED787E494946C7819E675B91E2464C7CE (void);
+// 0x0000001C System.Object Block/<ResetFlag>d__11::System.Collections.IEnumerator.get_Current()
+extern void U3CResetFlagU3Ed__11_System_Collections_IEnumerator_get_Current_mEFCDC75F1665DC01CF2ABA4DBB567BB89D2FEA0C (void);
+// 0x0000001D System.Void HeightCheck::Update()
 extern void HeightCheck_Update_m489CF938BBCF616939B1EFDD0898F916FB8B7AB7 (void);
-// 0x0000001F System.Void HeightCheck::CheckHeight()
+// 0x0000001E System.Void HeightCheck::CheckHeight()
 extern void HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63 (void);
-// 0x00000020 System.Void HeightCheck::.ctor()
+// 0x0000001F System.Void HeightCheck::.ctor()
 extern void HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1 (void);
-// 0x00000021 System.Void SpawnableManager::Awake()
+// 0x00000020 System.Void SpawnableManager::Awake()
 extern void SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30 (void);
+// 0x00000021 System.Void SpawnableManager::Update()
+extern void SpawnableManager_Update_m7A9A38650830610C5C81A77D22ABB3A011E23220 (void);
 // 0x00000022 System.Void SpawnableManager::FixedUpdate()
 extern void SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6 (void);
-// 0x00000023 System.Void SpawnableManager::.ctor()
+// 0x00000023 System.Void SpawnableManager::CountLevelScore()
+extern void SpawnableManager_CountLevelScore_mAF5D407D1BA747F1D2506F8732CF4F3837185915 (void);
+// 0x00000024 System.Void SpawnableManager::LevelFinished()
+extern void SpawnableManager_LevelFinished_mF89987BB4C6503B8AFCD4CC0C31F7244694A295A (void);
+// 0x00000025 System.Void SpawnableManager::.ctor()
 extern void SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED (void);
-static Il2CppMethodPointer s_methodPointers[35] = 
+static Il2CppMethodPointer s_methodPointers[37] = 
 {
 	AnchorCreator_get_AnchorPrefab_mBBAF7805E9D9F8D79408EE642D153BC76306B25A,
 	AnchorCreator_set_AnchorPrefab_m53CC9CC3022C713826B44536B48B462C8A1FACFF,
@@ -106,63 +110,67 @@ static Il2CppMethodPointer s_methodPointers[35] =
 	Block_DestroyThisGameobject_mA9D108AFC30B194A754D825F98E7E3B9D9CBA6AA,
 	Block_ResetFlag_m7A7DCCDB3392667E813A010AA9FE4B3E3E2C703B,
 	Block__ctor_m03C82E6CA5BC9C7A8ED4E801FA7DBADE4B01CBDF,
-	U3CResetFlagU3Ed__9__ctor_mE339C35A30535AC3468EDB6D1C312D9B1B0E1237,
-	U3CResetFlagU3Ed__9_System_IDisposable_Dispose_m19A3AC567BB7506386AAA597490583784895CDBC,
-	U3CResetFlagU3Ed__9_MoveNext_mFED80C3CBFDA11CF458E71A0ACD187F138DEEEE5,
-	U3CResetFlagU3Ed__9_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC95E35EB3E093C859EE18D83514851417767C8E9,
-	U3CResetFlagU3Ed__9_System_Collections_IEnumerator_Reset_mB359DEF7211B6D3569F0A3E2A96E6785469B7CA9,
-	U3CResetFlagU3Ed__9_System_Collections_IEnumerator_get_Current_m88517EEDB7C098D76ADFBBDC96DDE43F11565784,
-	HeightCheck_Awake_mB3A4BE870D11554DEFB97694119F67F8480B2E1A,
+	U3CResetFlagU3Ed__11__ctor_m16E4E2AF6E66992B22E5A4E231D8DCBFB8333199,
+	U3CResetFlagU3Ed__11_System_IDisposable_Dispose_mF16FE0A168704BF47A81E848B0EBC53EEB2B638F,
+	U3CResetFlagU3Ed__11_MoveNext_m83E749BAFB2BDD626591F524FFC29FF251D89F3C,
+	U3CResetFlagU3Ed__11_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m5501A33F4ED9B6A803642E809575C94984B12FF3,
+	U3CResetFlagU3Ed__11_System_Collections_IEnumerator_Reset_mEEA2A3EED787E494946C7819E675B91E2464C7CE,
+	U3CResetFlagU3Ed__11_System_Collections_IEnumerator_get_Current_mEFCDC75F1665DC01CF2ABA4DBB567BB89D2FEA0C,
 	HeightCheck_Update_m489CF938BBCF616939B1EFDD0898F916FB8B7AB7,
 	HeightCheck_CheckHeight_m695FC4D9DB9DFFBF33DF0C2746C3872873959C63,
 	HeightCheck__ctor_mCC2D15A05FFEFD49F7175EE9410C00D5C971F5D1,
 	SpawnableManager_Awake_m918F63E9921F96D95D96383241EFEB59A2F99A30,
+	SpawnableManager_Update_m7A9A38650830610C5C81A77D22ABB3A011E23220,
 	SpawnableManager_FixedUpdate_m76C04A8D01D2BE5DECDB8371DAC7F62B19DEFCE6,
+	SpawnableManager_CountLevelScore_mAF5D407D1BA747F1D2506F8732CF4F3837185915,
+	SpawnableManager_LevelFinished_mF89987BB4C6503B8AFCD4CC0C31F7244694A295A,
 	SpawnableManager__ctor_m5E989BEEF4E8A6A12828E117976ED1043ACAA1ED,
 };
-static const int32_t s_InvokerIndices[35] = 
+static const int32_t s_InvokerIndices[37] = 
 {
-	5334,
-	4335,
-	5440,
-	5440,
-	5440,
-	5440,
-	8544,
-	5376,
-	4369,
-	5440,
-	5440,
-	5440,
-	4221,
-	4335,
-	5440,
-	8544,
-	5440,
-	5440,
-	5440,
-	5440,
-	5334,
-	5440,
-	4309,
-	5440,
-	5245,
-	5334,
-	5440,
-	5334,
-	5440,
-	5440,
-	5440,
-	5440,
-	5440,
-	5440,
-	5440,
+	5336,
+	4337,
+	5442,
+	5442,
+	5442,
+	5442,
+	8546,
+	5378,
+	4371,
+	5442,
+	5442,
+	5442,
+	4223,
+	4337,
+	5442,
+	8546,
+	5442,
+	5442,
+	5442,
+	5442,
+	5336,
+	5442,
+	4311,
+	5442,
+	5247,
+	5336,
+	5442,
+	5336,
+	5442,
+	5442,
+	5442,
+	5442,
+	5442,
+	5442,
+	5442,
+	5442,
+	5442,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	35,
+	37,
 	s_methodPointers,
 	0,
 	NULL,

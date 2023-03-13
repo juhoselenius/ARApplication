@@ -7,6 +7,9 @@ public class Block : MonoBehaviour
 {
     public GameObject spawnableManager;
     public int materialIndex;
+
+    public float iceMeltTime;
+    private float iceCounter;
     
     private Renderer rend;
 
@@ -23,13 +26,15 @@ public class Block : MonoBehaviour
         materialIndex = 0;
         isChangingMaterial = false;
 
+        iceMeltTime = 10f;
+
         spawnableManager = GameObject.FindGameObjectWithTag("SpawnableManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.localScale.y <= 0)
+        if(gameObject.transform.localScale.x <= 0)
         {
             DestroyThisGameobject();
         }
@@ -41,10 +46,26 @@ public class Block : MonoBehaviour
 
         if(indexText != null)
         {
-            indexText.text = gameObject.transform.position.y.ToString();
+            indexText.text = materialIndex.ToString();
         }
 
-        //gameObject.transform.localScale -= new Vector3(0.01f * (materialIndex + 1) / 100, 0.01f * (materialIndex + 1) / 100, 0.01f * (materialIndex + 1) / 100);
+        // Functionality for the melting of the ice cube
+        if(materialIndex == 2)
+        {
+            iceCounter += Time.deltaTime;
+            rend.material.color = Color.Lerp(rend.material.color, Color.black, Time.deltaTime / (iceMeltTime - iceCounter));
+
+            if(iceCounter > iceMeltTime)
+            {
+                DestroyThisGameobject();
+            }
+        }
+
+        if (materialIndex != 2)
+        {
+            iceCounter = 0;
+            rend.material.color = Color.white;
+        }
     }
 
     public void ChangeMaterial()
@@ -55,7 +76,8 @@ public class Block : MonoBehaviour
 
             // Checking the next availability index
             int nextIndex = (materialIndex + 1) % spawnableManager.GetComponent<SpawnableManager>().cubeMaterials.Count;
-            while (spawnableManager.GetComponent<SpawnableManager>().materialAmount[nextIndex] == 0)
+            
+            /*while (spawnableManager.GetComponent<SpawnableManager>().materialAmount[nextIndex] == 0)
             {
                 nextIndex = (nextIndex + 1) % spawnableManager.GetComponent<SpawnableManager>().cubeMaterials.Count;
                 if (nextIndex == materialIndex) // All materials are used up
@@ -65,14 +87,14 @@ public class Block : MonoBehaviour
             }
 
             // Increasing the amount of available objects for previous material
-            spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]++;
+            spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]++;*/
 
             // Changing the material for the cube
             materialIndex = nextIndex;
             rend.material = spawnableManager.GetComponent<SpawnableManager>().cubeMaterials[materialIndex];
 
             // Decreasing the amount of available objects for new material
-            spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]--;
+            ////spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]--;
 
             // Reset the flag after a short delay
             StartCoroutine(ResetFlag());
@@ -84,7 +106,7 @@ public class Block : MonoBehaviour
         if (materialIndex >= 0 && materialIndex < spawnableManager.GetComponent<SpawnableManager>().cubeMaterials.Count)
         {
             // Increase the amount of available objects for destroyed material
-            spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]++;
+            ////spawnableManager.GetComponent<SpawnableManager>().materialAmount[materialIndex]++;
 
             // Destroy the gameObject
             Destroy(gameObject);

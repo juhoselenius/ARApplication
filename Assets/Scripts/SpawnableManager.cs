@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.Timeline;
+using TMPro;
 
 /*
  * Made with the help of Unity Tutorial: Placing and Manipulating Objects in AR
@@ -12,37 +14,95 @@ using Unity.VisualScripting;
 
 public class SpawnableManager : MonoBehaviour
 {
+    public int currentLevel;
+    
     public ARRaycastManager arRaycastManager;
     public GameObject spawnablePrefab;
     public GameObject heightStalker;
 
+    public GameObject gameUI;
+    public GameObject readyWindow;
+    public GameObject levelClearedWindow;
+
     public List<Material> cubeMaterials = new List<Material>();
-    public List<int> materialAmount = new List<int>();
+    //public List<int> materialAmount = new List<int>();
 
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Camera arCam;
     private GameObject spawnedObject;
     private float destroyCounter;
+    private float completedCounter;
+    private float timeCounter;
 
-    public Text debugText;
+    private int time;
+    private int totalScore;
+    private int levelScore;
+    private int levelTimeScore;
+    private int cubePenalty;
+    private bool scoreCounted;
+    public TextMeshProUGUI timeValueText;
+    public TextMeshProUGUI scoreValueText;
+    public TextMeshProUGUI levelValueText;
+
+    public TextMeshProUGUI timeScoreValueText;
+    public TextMeshProUGUI cubePenaltyValueText;
+    public TextMeshProUGUI levelScoreValueText;
+
+    private bool disabledControls;
 
     // Start is called before the first frame update
     void Awake()
     {
+        disabledControls = true;
         spawnedObject = null;
         destroyCounter = 0;
+        completedCounter = 0;
+        timeCounter = 0;
+        currentLevel = 0;
+        cubePenalty = 0;
+        time = 0;
+        totalScore = 0;
+        levelScore = 0;
+        levelTimeScore = 0;
+        scoreCounted = false;
         arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
-        
-        debugText = FindObjectOfType<Text>();
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if(completedCounter < 3 && !disabledControls)
+        {
+            timeCounter += Time.deltaTime;
+            time = Mathf.RoundToInt(timeCounter);
+            timeValueText.text = time.ToString();
+        }
+        
+        if(heightStalker.GetComponent<HeightCheck>().cubesHeight == 3 + currentLevel)
+         {
+            completedCounter += Time.deltaTime;
+
+            if(completedCounter > 3)
+            {
+                disabledControls = true;
+                
+                if(!scoreCounted)
+                {
+                    CountLevelScore();
+                    scoreCounted = true;
+                }
+
+                levelClearedWindow.SetActive(true);
+                gameUI.SetActive(false);
+            }
+         }
+         else
+        {
+            completedCounter = 0;
+        }
+    }
     void FixedUpdate()
     {
-        debugText.text = "MaterialsAmount 0: " + materialAmount[0].ToString() + "\n"
-                            + "MaterialsAmount 1: " + materialAmount[1].ToString() + "\n"
-                            + "MaterialsAmount 2: " + materialAmount[2].ToString() + "\n";
-
         // Check if there's a touch event
         if (Input.touchCount == 0)
         {
@@ -52,10 +112,8 @@ public class SpawnableManager : MonoBehaviour
         RaycastHit hit;
         Ray ray = arCam.ScreenPointToRay(Input.GetTouch(0).position);
 
-        //debugText.text = "Hit pose position y: " + hits[0].pose.position.y;
-
         // Check if the ray hits a plane
-        if (arRaycastManager.Raycast(Input.GetTouch(0).position, hits))
+        if (arRaycastManager.Raycast(Input.GetTouch(0).position, hits) && !disabledControls)
         {
             // If touching the screen and no object is selected
             if(Input.GetTouch(0).phase == TouchPhase.Began && spawnedObject == null)
@@ -65,16 +123,25 @@ public class SpawnableManager : MonoBehaviour
                     // Check if we are touching a previously spawned object
                     if(hit.collider.gameObject.tag == "Spawnable")
                     {
+                        hit.collider.gameObject.GetComponent<Block>().ChangeMaterial();
+
+                        /*
                         // Check if have available materials left
                         if (materialAmount[0] > 0 || materialAmount[1] > 0 || materialAmount[2] > 0)
                         {
                             hit.collider.gameObject.GetComponent<Block>().ChangeMaterial();
                         }
+                        */
                     }
                     // If not, we instantiate the prefab and assing it as selectedObject
                     else
                     {
-                        if (materialAmount[0] > 0 || materialAmount[1] > 0 || materialAmount[2] > 0)
+                        Vector3 spawnPosition = new Vector3(hits[0].pose.position.x, hits[0].pose.position.y + 0.1f, hits[0].pose.position.z);
+                        spawnedObject = Instantiate(spawnablePrefab, spawnPosition, Quaternion.identity);
+                        spawnedObject.GetComponent<Block>().materialIndex = Random.Range(0, cubeMaterials.Count);
+                        spawnedObject.GetComponent<Renderer>().material = cubeMaterials[spawnedObject.GetComponent<Block>().materialIndex];
+
+                        /*if (materialAmount[0] > 0 || materialAmount[1] > 0 || materialAmount[2] > 0)
                         {
                             Vector3 spawnPosition = new Vector3(hits[0].pose.position.x, hits[0].pose.position.y + 0.1f, hits[0].pose.position.z);
                             spawnedObject = Instantiate(spawnablePrefab, spawnPosition, Quaternion.identity);
@@ -96,7 +163,7 @@ public class SpawnableManager : MonoBehaviour
                                 spawnedObject.GetComponent<Block>().materialIndex = 2;
                                 materialAmount[2]--;
                             }
-                        }
+                        }*/
                     }
                 }
             }
@@ -111,7 +178,7 @@ public class SpawnableManager : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Spawnable")
                     {
                         // Destroying the object if finger stays on it over 0.5 seconds
-                        if(destroyCounter > 0.8f)
+                        if(destroyCounter > 0.5f)
                         {
                             hit.collider.gameObject.GetComponent<Block>().DestroyThisGameobject();
                             destroyCounter = 0;
@@ -127,10 +194,8 @@ public class SpawnableManager : MonoBehaviour
                     // Check if we are touching a previously spawned object
                     if (hit.collider.gameObject.tag == "Spawnable")
                     {
-                        Vector3 newPosition = new Vector3(hits[0].pose.position.x, hits[0].pose.position.y + heightStalker.GetComponent<HeightCheck>().structureHeight + 0.15f, hits[0].pose.position.z);
+                        Vector3 newPosition = new Vector3(hits[0].pose.position.x, hits[0].pose.position.y + heightStalker.GetComponent<HeightCheck>().structureHeight + 0.2f, hits[0].pose.position.z);
                         spawnedObject.transform.position = newPosition;
-                        //debugText.text = "Hits pose position y: " + hits[0].pose.position.y + "\n"
-                           // + "Hit y:" + hit.transform.position.y;
                     }
                     // If not, we move the spawnedObject freely
                     else
@@ -150,5 +215,78 @@ public class SpawnableManager : MonoBehaviour
                 destroyCounter = 0;
             }
         }
+    }
+
+    public void CountLevelScore()
+    {
+        GameObject[] destroyObjects = GameObject.FindGameObjectsWithTag("Spawnable");
+
+        if (destroyObjects.Length > 0)
+        {
+            foreach (GameObject obj in destroyObjects)
+            {
+                switch (obj.GetComponent<Block>().materialIndex)
+                {
+                    case 0:
+                        cubePenalty += 10;
+                        break;
+                    case 1:
+                        cubePenalty += 5;
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        levelTimeScore += Mathf.RoundToInt(time);
+        levelScore += cubePenalty;
+        levelScore += levelTimeScore;
+        totalScore += levelScore;
+
+        timeScoreValueText.text = levelTimeScore.ToString();
+        cubePenaltyValueText.text = cubePenalty.ToString();
+        levelScoreValueText.text = levelScore.ToString();
+        scoreValueText.text = totalScore.ToString();
+    }
+
+    public void LevelFinished()
+    {
+        if(readyWindow.activeInHierarchy)
+        {
+            readyWindow.SetActive(false);
+        }
+        if (levelClearedWindow.activeInHierarchy)
+        {
+            levelClearedWindow.SetActive(false);
+        }
+
+        GameObject[] destroyObjects = GameObject.FindGameObjectsWithTag("Spawnable");
+
+        if(destroyObjects.Length > 0)
+        {
+            foreach(GameObject obj in destroyObjects)
+            {
+                obj.GetComponent<Block>().DestroyThisGameobject();
+            }
+        }
+
+        spawnedObject = null;
+        destroyCounter = 0;
+        completedCounter = 0;
+        timeCounter = 0;
+        cubePenalty = 0;
+        levelScore = 0;
+        levelTimeScore = 0;
+
+        currentLevel++;
+        levelValueText.text = currentLevel.ToString();
+
+        disabledControls = false;
+        scoreCounted = false;
+
+        gameUI.SetActive(true);
     }
 }

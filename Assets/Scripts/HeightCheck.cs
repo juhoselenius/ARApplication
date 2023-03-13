@@ -7,15 +7,12 @@ public class HeightCheck : MonoBehaviour
 {
     public GameObject[] objects;
     public float structureHeight;
+    public int cubesHeight;
     public float high;
     public float low;
     public float counter;
     public TextMeshProUGUI structureHeightText;
-    
-    void Awake()
-    {
-        counter = 0;
-    }
+    public SpawnableManager spawnableManager;
 
     // Update is called once per frame
     void Update()
@@ -34,7 +31,7 @@ public class HeightCheck : MonoBehaviour
 
         if (objects.Length == 0)
         {
-            structureHeightText.text = "0";
+            structureHeightText.text = (3 + spawnableManager.currentLevel).ToString();
             return;
         }
         
@@ -52,7 +49,15 @@ public class HeightCheck : MonoBehaviour
         }
 
         structureHeight = high - low;
+        cubesHeight = Mathf.RoundToInt(structureHeight / 0.1f) + 1;
 
-        structureHeightText.text = structureHeight.ToString();
+        if(3 + spawnableManager.currentLevel - cubesHeight > 0)
+        {
+            structureHeightText.text = ((3 + spawnableManager.currentLevel) - cubesHeight).ToString();
+        }
+        else
+        {
+            structureHeightText.text = "0";
+        }
     }
 }
