@@ -82,6 +82,11 @@ public class SpawnableManager : MonoBehaviour
          {
             completedCounter += Time.deltaTime;
 
+            if (!AudioManager.aManager.IsClipPlaying("tick-tock") && !disabledControls)
+            {
+                AudioManager.aManager.Play("tick-tock");
+            }
+
             if(completedCounter > 3)
             {
                 disabledControls = true;
@@ -98,6 +103,10 @@ public class SpawnableManager : MonoBehaviour
          }
          else
         {
+            if (AudioManager.aManager.IsClipPlaying("tick-tock"))
+            {
+                AudioManager.aManager.Stop("tick-tock");
+            }
             completedCounter = 0;
         }
     }
@@ -219,6 +228,9 @@ public class SpawnableManager : MonoBehaviour
 
     public void CountLevelScore()
     {
+        AudioManager.aManager.Stop("tick-tock");
+        AudioManager.aManager.Play("ding");
+
         GameObject[] destroyObjects = GameObject.FindGameObjectsWithTag("Spawnable");
 
         if (destroyObjects.Length > 0)
@@ -288,5 +300,10 @@ public class SpawnableManager : MonoBehaviour
         scoreCounted = false;
 
         gameUI.SetActive(true);
+
+        if (AudioManager.aManager.IsClipPlaying("ding"))
+        {
+            AudioManager.aManager.Stop("ding");
+        }
     }
 }
